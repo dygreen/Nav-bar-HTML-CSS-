@@ -1,0 +1,104 @@
+:root {
+  --text-color: #f0f4f5;
+  --background-color: #004d1d;
+  --accent-color: #aaaa05;
+}
+
+body {
+  margin: 0;
+  font-family: "Source Sans Pro";
+}
+
+a {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--background-color);
+  padding: 8px 12px;
+}
+
+.navbar__logo {
+  font-size: 24px;
+  color: var(--text-color);
+}
+
+.navbar__logo i {
+  color: var(--accent-color);
+}
+
+.navbar__menu {
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+
+.navbar__menu li {
+  padding: 8px 12px;
+}
+
+.navbar__menu li:hover {
+  background-color: var(--accent-color);
+  border-radius: 4px;
+}
+
+.navbar__icons {
+  list-style: none;
+  color: var(--text-color);
+  display: flex;
+}
+
+.navbar__icons li {
+  padding: 8px 12px;
+}
+
+.navbar__toggle {
+  /*flexbox로 옮기는 것보다는 수동적으로 문서의 흐름에서 나와 옮기기 = position absolute */
+  display: none;
+  position: absolute;
+  right: 32px;
+  font-size: 24px;
+  color: var(--accent-color);
+}
+
+@media screen and (max-width: 768px) {
+  /*768px=tablet size */
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 8px 24px;
+  }
+
+  .navbar__menu {
+    display: none;
+    flex-direction: column;
+    align-items: center; /* 움직임이 없는 이유는 width가 작기때문 */
+    width: 100%; /* 따라서 메뉴 너비를 최대한으로 바꿔주기 */
+  }
+
+  /* menu list 마우스 hover 영역을 넓히기 위해서 */
+  .navbar__menu li {
+    width: 100%; /* 영역이 꽉 채워지면, 텍스트는 자동으로 왼쪽 정렬됨 */
+    text-align: center;
+  }
+
+  .navbar__icons {
+    display: none;
+    justify-content: center;
+    width: 100%;
+    padding: 0;
+  }
+
+  .navbar__toggle {
+    display: block;
+  }
+
+  .navbar__menu.active,
+  .navbar__icons.active {
+    display: flex;
+  }
+}
